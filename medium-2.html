@@ -1,0 +1,134 @@
+<!-- This is a placeholder file to show structure only. Each puzzle from medium-2.html to medium-20.html will follow this structure. Below is an example for medium-2.html --><!-- medium-2.html --><!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Medium Puzzle - 2</title>
+  <link href="https://fonts.googleapis.com/css2?family=Kalam&family=Montserrat:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #ffffff;
+      padding: 40px 20px;
+      margin: 0;
+      text-align: center;
+    }
+    .puzzle-box {
+      background: #1e3c4a;
+      border: 2px solid #4bc0c8;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 700px;
+      margin: auto;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    .puzzle-box h2 {
+      color: #4bc0c8;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+    .puzzle-box p {
+      font-size: 18px;
+      color: #e3f6f5;
+    }
+    input[type="text"] {
+      padding: 12px;
+      font-size: 16px;
+      width: 80%;
+      margin-top: 20px;
+      border: 2px solid #4bc0c8;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      color: #222;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px 30px;
+      background-color: #4bc0c8;
+      color: #0f2027;
+      font-weight: bold;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background-color: #38a1aa;
+    }
+    .result {
+      margin-top: 25px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .hint-section {
+      margin-top: 30px;
+      text-align: left;
+    }
+    .hint-content {
+      display: none;
+      padding: 15px;
+      background-color: #305c68;
+      border-radius: 10px;
+      margin-top: 10px;
+      color: #daf6f6;
+    }
+    .toggle-hint {
+      background: none;
+      border: 2px solid #4bc0c8;
+      color: #4bc0c8;
+      font-size: 16px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .toggle-hint:hover {
+      background-color: #4bc0c8;
+      color: #0f2027;
+    }
+    .back-link {
+      display: block;
+      margin-top: 40px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #ffffff;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="puzzle-box">
+    <h2>Medium Puzzle 2</h2>
+    <p>I’m an odd number. Take away one letter and I become even. What number am I?</p><input type="text" id="answer" placeholder="Your answer here...">
+<br>
+<button onclick="checkAnswer()">Submit</button>
+
+<div class="result" id="result"></div>
+
+<div class="hint-section">
+  <button class="toggle-hint" onclick="toggleHint()">Show Hint</button>
+  <div class="hint-content" id="hint">It's a 5-letter word, and after removing a letter it becomes a math term.</div>
+</div>
+
+<a class="back-link" href="medium-3.html">→ Next Puzzle</a>
+
+  </div>  <script>
+    function checkAnswer() {
+      const userAnswer = document.getElementById("answer").value.trim().toLowerCase();
+      const result = document.getElementById("result");
+      if (userAnswer === "seven") {
+        result.style.color = "lightgreen";
+        result.innerText = "✅ Correct! Well done.";
+      } else {
+        result.style.color = "#ff4e4e";
+        result.innerText = "❌ Incorrect. Try again!";
+      }
+    }
+
+    function toggleHint() {
+      const hint = document.getElementById("hint");
+      hint.style.display = (hint.style.display === "none" || hint.style.display === "") ? "block" : "none";
+    }
+  </script></body>
+</html>

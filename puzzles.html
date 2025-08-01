@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Puzzle Zone - BharatVerse</title>
+  <style>
+    body {
+      font-family: 'Merriweather', serif;
+      background: #f9f4e8;
+      margin: 0;
+      padding: 0;
+    }
+
+    .header {
+      background: linear-gradient(to right, #d19c52, #a15e1a);
+      padding: 40px 20px;
+      text-align: center;
+      color: white;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 36px;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .tab {
+      background: white;
+      border: 2px solid #d19c52;
+      padding: 10px 25px;
+      margin: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .tab.active, .tab:hover {
+      background: #d19c52;
+      color: white;
+    }
+
+    .puzzle-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .puzzle-card {
+      background: #fff;
+      border: 2px solid #a67c52;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      font-weight: bold;
+      color: #5c3d18;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+
+    .puzzle-card:hover {
+      transform: scale(1.05);
+      background-color: #fff8e1;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .back-link {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .back-link a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #a1561a;
+    }
+
+    .back-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>🧠 Puzzle Zone</h1>
+    <p>Choose your level and challenge your mind!</p>
+  </div>
+
+  <div class="tabs">
+    <div class="tab active" onclick="showTab('easy')">🟢 Easy</div>
+    <div class="tab" onclick="showTab('medium')">🟡 Medium</div>
+    <div class="tab" onclick="showTab('hard')">🔴 Hard</div>
+  </div>
+
+  <!-- EASY -->
+  <div id="easy" class="puzzle-grid">
+    <!-- 20 Easy Puzzles -->
+    <!-- Create links like easy-1.html, easy-2.html etc -->
+    <!-- Card content generated using JS below -->
+  </div>
+
+  <!-- MEDIUM -->
+  <div id="medium" class="puzzle-grid hidden">
+    <!-- 20 Medium Puzzles -->
+  </div>
+
+  <!-- HARD -->
+  <div id="hard" class="puzzle-grid hidden">
+    <!-- 10 Hard Puzzles -->
+  </div>
+
+  <div class="back-link">
+    <a href="index.html">⬅ Back to Home</a>
+  </div>
+
+  <script>
+    // Generate puzzle cards dynamically
+    const easyDiv = document.getElementById("easy");
+    const mediumDiv = document.getElementById("medium");
+    const hardDiv = document.getElementById("hard");
+
+    for (let i = 1; i <= 20; i++) {
+      easyDiv.innerHTML += `
+        <div class="puzzle-card" onclick="location.href='easy-${i}.html'">
+          🟢 Easy Puzzle ${i}
+        </div>`;
+    }
+
+    for (let i = 1; i <= 20; i++) {
+      mediumDiv.innerHTML += `
+        <div class="puzzle-card" onclick="location.href='medium-${i}.html'">
+          🟡 Medium Puzzle ${i}
+        </div>`;
+    }
+
+    for (let i = 1; i <= 10; i++) {
+      hardDiv.innerHTML += `
+        <div class="puzzle-card" onclick="location.href='hard-${i}.html'">
+          🔴 Hard Puzzle ${i}
+        </div>`;
+    }
+
+    // Tab switching logic
+    function showTab(level) {
+      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.puzzle-grid').forEach(grid => grid.classList.add('hidden'));
+
+      document.querySelector(`.tab[onclick="showTab('${level}')"]`).classList.add('active');
+      document.getElementById(level).classList.remove('hidden');
+    }
+  </script>
+
+</body>
+</html>

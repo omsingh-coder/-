@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thoughts & Dreams - BharatVerse</title>
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+  <header class="hero">
+    <h1>📝 Share Your Dreams & Thoughts</h1>
+    <p>Write freely, express boldly, and inspire others!</p>
+    <a href="index.html">⬅️ Back to Home</a>
+  </header>
+
+  <section class="form-section">
+    <form id="thoughtForm">
+      <textarea id="thoughtInput" rows="6" placeholder="What's on your mind or in your dreams?"></textarea>
+      <br>
+      <button type="submit">Submit Thought</button>
+    </form>
+    <div id="thoughtsList"></div>
+  </section>
+
+  <script type="module">
+    import { db, collection, addDoc } from "./scripts/firebase.js";
+
+    const form = document.getElementById("thoughtForm");
+    const input = document.getElementById("thoughtInput");
+    const thoughtsList = document.getElementById("thoughtsList");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const thought = input.value.trim();
+      if (thought.length < 5) return alert("Write something meaningful!");
+      await addDoc(collection(db, "thoughts"), {
+        text: thought,
+        time: new Date().toISOString()
+      });
+      input.value = "";
+      alert("Thanks for sharing your thought!");
+    });
+  </script>
+</body>
+</html>
