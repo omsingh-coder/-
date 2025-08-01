@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Easy Puzzle 5</title>
+  <style>
+    body {
+      font-family: 'Merriweather', serif;
+      background: #fffce7;
+      padding: 40px;
+      margin: 0;
+      text-align: center;
+    }
+
+    .puzzle-box {
+      background: #ffffff;
+      border: 3px solid #d1a05e;
+      border-radius: 15px;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+    }
+
+    .puzzle-box h2 {
+      color: #a1561a;
+      margin-bottom: 20px;
+    }
+
+    .puzzle-box p {
+      font-size: 18px;
+      color: #333;
+    }
+
+    input[type="text"] {
+      padding: 12px;
+      font-size: 16px;
+      width: 80%;
+      margin-top: 20px;
+      border: 2px solid #d1a05e;
+      border-radius: 8px;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 25px;
+      background-color: #d1a05e;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #b67f35;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .back-link {
+      display: block;
+      margin-top: 40px;
+      text-decoration: none;
+      font-weight: bold;
+      color: #a1561a;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="puzzle-box">
+    <h2>Easy Puzzle 5</h2>
+    <p>I speak without a mouth and hear without ears. I have no body, but I come alive with the wind. What am I?</p>
+    <input type="text" id="answer" placeholder="Enter your answer">
+    <button onclick="checkAnswer()">Submit</button>
+    <div class="result" id="result"></div>
+    <a href="puzzles.html" class="back-link">← Back to Puzzles</a>
+  </div>
+
+  <script>
+    function checkAnswer() {
+      const userAnswer = document.getElementById('answer').value.trim().toLowerCase();
+      const correctAnswer = "echo";
+      const result = document.getElementById('result');
+      if (userAnswer === correctAnswer) {
+        result.textContent = "✅ Correct!";
+        result.style.color = "green";
+      } else {
+        result.textContent = "❌ Try again!";
+        result.style.color = "red";
+      }
+    }
+  </script>
+</body>
+</html>
